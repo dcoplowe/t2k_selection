@@ -23,7 +23,7 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
     
     if(m_infile || !m_infile->IsOpen()){
-        cout << "ERROR : Could not open file : " << infile << endl;
+        cout << "ERROR : Could not open file : " << infilename << endl;
         exit(0);
     }
     
