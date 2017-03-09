@@ -100,6 +100,7 @@ void FindFiles::Run(){
     std::string line;
     std::ifstream linecount(m_oalistname.c_str());
     while (std::getline(linecount, line)) number_of_lines++;
+    cout << "number_of_lines = " << number_of_lines << endl;
     
     for(int i = 1; i < 11; i++){
         string line1 = GetFileName(i);
