@@ -45,7 +45,7 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
         exit(0);
     }
     
-    m_intree = (TTree*)m_infile->Get("Truth");
+    m_intree = (TTree*)m_infile->Get("truth");
     m_intree->SetBranchAddress("evt", &m_evt, &m_b_evt);
     m_entries = m_intree->GetEntries();
     
