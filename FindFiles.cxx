@@ -103,9 +103,9 @@ void FindFiles::Run(){
     
     for(int entry = 0; entry < m_entries; entry++){
         
-        m_intree->GetEntry(i);
+        m_intree->GetEntry(entry);
 
-        cout << "Entry " << entry << ") evt = " << evt << endl;
+        cout << "Entry " << entry << ") evt = " << m_evt << endl;
 //        for(int file_no = 1; file_no < n_lines; file_no++){
 //            string file = GetFileName(file_no);
 //            cout << "A" << file_no << ")" << file << endl;
