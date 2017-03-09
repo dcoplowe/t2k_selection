@@ -107,6 +107,7 @@ int main(int argc, char *argv[]){
     }
     
     FindFiles * find = new FindFiles(infilename, oa_list);
+    find->Run();
     
     delete find;
     
