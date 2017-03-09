@@ -106,8 +106,8 @@ void FindFiles::Run(){
     
     for(int i = 1; i < n_lines; i++){
         
-        global->Add(GetFileName(i));
-        tracker->Add(GetFileName(i));
+        global->Add(GetFileName(i).c_str());
+        tracker->Add(GetFileName(i).c_str());
         if(i == 20) break;
     }
     
