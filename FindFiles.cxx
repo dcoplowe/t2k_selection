@@ -21,8 +21,12 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
     m_infile = new TFile(infilename.c_str(), "READ");
     
+    if(m_infile){
+        cout << "ERROR : Could not open file : " << infilename << endl;
+        exit(0);
+    }
     
-    if(m_infile || !m_infile->IsOpen()){
+    if(!m_infile->IsOpen()){
         cout << "ERROR : Could not open file : " << infilename << endl;
         exit(0);
     }
