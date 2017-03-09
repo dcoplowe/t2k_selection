@@ -46,8 +46,15 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     }
     
     m_intree = (TTree*)m_infile->Get("truth");
+
+    if(m_intree){
     m_intree->SetBranchAddress("evt", &m_evt, &m_b_evt);
     m_entries = m_intree->GetEntries();
+    }
+    else {
+        cout << "ERROR : Could not get tree" << endl;
+        exit(0);
+    }
     
     m_oalistname = oa_list;
     
@@ -94,7 +101,7 @@ void FindFiles::Run(){
     std::ifstream linecount(m_oalistname.c_str());
     while (std::getline(linecount, line)) number_of_lines++;
     
-    for(int i = 0; i < 11; i++){
+    for(int i = 1; i < 11; i++){
         string line1 = GetFileName(i);
         cout << "A1)" << line1 << endl;
     }
