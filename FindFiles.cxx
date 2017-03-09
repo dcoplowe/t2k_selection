@@ -114,7 +114,7 @@ void FindFiles::Run(){
     Int_t tracker_evt;
     
     global->SetBranchAddress("EventID", &global_evt);
-    tracker->SetBranchAddress("EventID" &tracker_evt);
+    tracker->SetBranchAddress("EventID", &tracker_evt);
     
     Int_t glob_entries = global->GetEntries();
     Int_t trac_entries = tracker->GetEntries();
@@ -132,7 +132,7 @@ void FindFiles::Run(){
         
         for (int trac_evt; trac_evt < trac_entries; trac_evt++) {
             tracker->GetEntry(trac_evt);
-            cout << "Global evt = " << tracker_evt << endl;
+            cout << "Tracker evt = " << tracker_evt << endl;
             if(trac_evt == 100) break;
         }
         
