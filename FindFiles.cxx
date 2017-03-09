@@ -105,29 +105,39 @@ void FindFiles::Run(){
 //    string common_base = GetFileName(1);
     
     for(int i = 1; i < n_lines; i++){
-        
         global->Add(GetFileName(i).c_str());
         tracker->Add(GetFileName(i).c_str());
         if(i == 20) break;
     }
     
-    int last_good_file = 0;
+    Int_t global_evt;
+    Int_t tracker_evt;
     
+    global->SetBranchAddress("EventID", &global_evt);
+    tracker->SetBranchAddress("EventID" &tracker_evt);
     
+    Int_t glob_entries = global->GetEntries();
+    Int_t trac_entries = tracker->GetEntries();
     
-//    for(int entry = 0; entry < m_entries; entry++){
-//        
-//        m_intree->GetEntry(entry);
-//
-//        cout << "Entry " << entry << ") evt = " << m_evt << endl;
-////        for(int file_no = 1; file_no < n_lines; file_no++){
-////            string file = GetFileName(file_no);
-////            cout << "A" << file_no << ")" << file << endl;
-////            if(file_no == 10) break;
-////        }
-//        
-//        if(entry == 200) break;
-//    }
+    for(int entry = 0; entry < m_entries; entry++){
+        
+        m_intree->GetEntry(entry);
+        cout << "Entry " << entry << ") evt = " << m_evt << endl;
+        
+        for (int glob_evt; glob_evt < glob_entries; glob_evt) {
+            global->GetEntry(glob_evt);
+            cout << "Global evt = " << global_evt << endl;
+            if(glob_evt == 100) break;
+        }
+        
+        for (int trac_evt; trac_evt < trac_entries; trac_evt) {
+            tracker->GetEntry(trac_evt);
+            cout << "Global evt = " << tracker_evt << endl;
+            if(trc_evt == 100) break;
+        }
+        
+        if(entry == 200) break;
+    }
 
 }
 
