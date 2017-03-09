@@ -34,9 +34,6 @@ private:
 FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
     m_infile = new TFile(infilename.c_str(), "READ");
-    m_intree = (TTree*)m_infile->Get("Truth");
-    m_intree->SetBranchAddress("evt", &m_evt, &m_b_evt);
-    m_entries = m_intree->GetEntries();
     
 //    if(m_infile){
 //        cout << "ERROR : Could not open file (NULL): " << infilename << endl;
@@ -47,6 +44,10 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
         cout << "ERROR : Could not open file : " << infilename << endl;
         exit(0);
     }
+    
+    m_intree = (TTree*)m_infile->Get("Truth");
+    m_intree->SetBranchAddress("evt", &m_evt, &m_b_evt);
+    m_entries = m_intree->GetEntries();
     
     m_oalistname = oa_list;
     
