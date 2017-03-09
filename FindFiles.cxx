@@ -7,7 +7,7 @@ using namespace std;
 class FindFiles {
 public:
     FindFiles(std::string infilename, std::string oa_listname);
-    ~FindFiles(){;}
+    ~FindFiles();
     
     void Run(){;}
     
@@ -19,7 +19,7 @@ private:
 
 FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
-    m_infile = new TFile(infile.c_str(), "READ");
+    m_infile = new TFile(infilename.c_str(), "READ");
     
     
     if(m_infile || !m_infile->IsOpen()){
