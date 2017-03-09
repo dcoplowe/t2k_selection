@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <limits>
+#include "TChain.h"
 
 using namespace std;
 
@@ -99,21 +100,34 @@ void FindFiles::Run(){
 
     int n_lines = GetNoLines();
     
+    TChain * global = new TChain("ReconDir/Global");
+    TChain * tracker = new TChain("ReconDir/Tracker");
+//    string common_base = GetFileName(1);
+    
+    for(int i = 1; i < n_lines; i++){
+        
+        global->Add(GetFileName(i));
+        tracker->Add(GetFileName(i));
+        if(i == 20) break;
+    }
+    
     int last_good_file = 0;
     
-    for(int entry = 0; entry < m_entries; entry++){
-        
-        m_intree->GetEntry(entry);
-
-        cout << "Entry " << entry << ") evt = " << m_evt << endl;
-//        for(int file_no = 1; file_no < n_lines; file_no++){
-//            string file = GetFileName(file_no);
-//            cout << "A" << file_no << ")" << file << endl;
-//            if(file_no == 10) break;
-//        }
-        
-        if(entry == 200) break;
-    }
+    
+    
+//    for(int entry = 0; entry < m_entries; entry++){
+//        
+//        m_intree->GetEntry(entry);
+//
+//        cout << "Entry " << entry << ") evt = " << m_evt << endl;
+////        for(int file_no = 1; file_no < n_lines; file_no++){
+////            string file = GetFileName(file_no);
+////            cout << "A" << file_no << ")" << file << endl;
+////            if(file_no == 10) break;
+////        }
+//        
+//        if(entry == 200) break;
+//    }
 
 }
 
@@ -139,8 +153,10 @@ int FindFiles::GetNoLines(){
 
 
 int main(int argc, char *argv[]){
-    
+
     string infilename;
+    
+    
     string oa_list;
     
     char cc;
