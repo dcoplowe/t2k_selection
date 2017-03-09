@@ -119,6 +119,11 @@ void FindFiles::Run(){
     Int_t glob_entries = global->GetEntries();
     Int_t trac_entries = tracker->GetEntries();
     
+    cout << "m_entries = " << m_entries << endl;
+    cout << "glob_entries = " << glob_entries << endl;
+    cout << "trac_entries = " << trac_entries << endl;
+
+    
     for(int entry = 0; entry < m_entries; entry++){
         
         m_intree->GetEntry(entry);
