@@ -126,7 +126,7 @@ void FindFiles::Run(){
     cout << "glob_entries = " << glob_entries << endl;
     cout << "trac_entries = " << trac_entries << endl;
     
-    for(int entry = 0; entry < 1/*m_entries*/; entry++){
+    for(int entry = 1; entry < 2/*m_entries*/; entry++){
         
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
