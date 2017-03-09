@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
 #include "TFile.h"
+#include "TTree.h"
+#include "TBranch.h"
 #include <iostream>
 #include <fstream>
+#include <limits>
 
 using namespace std;
 
@@ -15,13 +18,25 @@ public:
     
 private:
     TFile * m_infile;
+    TTree * m_intree;
+    
+    Int_t m_evt;
+    TBranch * m_b_evt;
+    Int_t m_entries;
+    
     std::string m_oalistname;
     std::string m_outfilename;
+    
+    std::string GetFileName(int num);
+    
 };
 
 FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
     m_infile = new TFile(infilename.c_str(), "READ");
+    m_intree = (TTree*)m_infile->Get("Truth");
+    m_intree->SetBranchAddress("evt", &m_evt, &m_b_evt);
+    m_entries = m_intree->GetEntries();
     
 //    if(m_infile){
 //        cout << "ERROR : Could not open file (NULL): " << infilename << endl;
@@ -73,6 +88,24 @@ FindFiles::~FindFiles(){
 
 void FindFiles::Run(){
 
+    int number_of_lines = 0;
+    std::string line;
+    std::ifstream linecount(m_oalistname.c_str());
+    while (std::getline(linecount, line)) number_of_lines++;
+    
+    for(int i = 0; i < 11; i++){
+        string line1 = GetFileName(i);
+        cout << "A1)" << line1 << endl;
+    }
+    
+//    for(int i = 0; i < m_entries; i++){
+//     
+//    
+//        
+//        
+//        
+//    }
+    
     
     string line;
     ifstream myfile (m_oalistname.c_str());
@@ -81,7 +114,7 @@ void FindFiles::Run(){
         int counter = 0;
         while ( getline (myfile,line) )
         {
-            cout << line << '\n' << endl;
+            cout << "B1)" << line << endl;
             counter++;
             if(counter == 10) break;
         }
@@ -91,6 +124,18 @@ void FindFiles::Run(){
     
     
 }
+
+std::string FindFiles::GetFileName(int num){
+    ifstream file (m_oalistname.c_str());
+    file.seekg(std::ios::beg);
+    for(int i=0; i < num - 1; ++i){
+        file.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+    }
+    string line;
+    file >> line;
+    return line;
+}
+
 
 int main(int argc, char *argv[]){
     
