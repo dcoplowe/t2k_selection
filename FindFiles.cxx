@@ -133,7 +133,7 @@ void FindFiles::Run(){
         
         for (int glob_evt = 0; glob_evt < glob_entries; glob_evt++) {
             global->GetEntry(glob_evt);
-            cout << glob_evt + 1 << "/" << glob_entries << ": Global evt = " << global_evt << " run = " << global_run << endl;
+            cout << glob_evt + 1 << "/" << glob_entries << " m_evt = " << m_evt << ": Global evt = " << global_evt << " run = " << global_run << endl;
             
             if(glob_evt == m_evt){
                 cout << "Found Event = " << global_evt << endl;
