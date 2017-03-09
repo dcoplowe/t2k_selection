@@ -36,7 +36,7 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     //3) Append _analysis_list.txt
     
     size_t point;// = 0;
-    while(point = m_outfilename.find("/") != std::string::npos){
+    while( (point = m_outfilename.find("/")) != std::string::npos){
         m_outfilename = m_outfilename.substr(m_outfilename.find("/"));
         cout << "Filename : " << m_outfilename << endl;
     }
