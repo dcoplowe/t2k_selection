@@ -45,16 +45,16 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
 //        cout << "Filename : " << m_outfilename << endl;
     }
     
-    if( (point = m_outfilename.find(".root")) != std::string::npos){
+    if( (point = m_outfilename.find("root")) != std::string::npos){
         m_outfilename = m_outfilename.substr(0, point);
-                cout << "Filename : " << m_outfilename << endl;
+//                cout << "Filename : " << m_outfilename << endl;
     }
     
-    
+    m_outfilename += "_goodoa_list.txt";
     
     string outdir = infilename;
     if( (point = outdir.find(m_outfilename.c_str()) ) != std::string::npos){
-        cout << "Point = " << point << endl;
+//        cout << "Point = " << point << endl;
         outdir = outdir.substr(0,point);
     }
     
