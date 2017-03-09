@@ -103,7 +103,7 @@ void FindFiles::Run(){
     
     for(int i = 1; i < 11; i++){
         string line1 = GetFileName(i);
-        cout << "A1)" << line1 << endl;
+        cout << "A" << i << ")" << line1 << endl;
     }
     
 //    for(int i = 0; i < m_entries; i++){
@@ -122,7 +122,7 @@ void FindFiles::Run(){
         int counter = 0;
         while ( getline (myfile,line) )
         {
-            cout << "B1)" << line << endl;
+            cout << "B" << counter << ")" << line << endl;
             counter++;
             if(counter == 10) break;
         }
