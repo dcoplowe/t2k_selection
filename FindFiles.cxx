@@ -107,7 +107,7 @@ void FindFiles::Run(){
 //    }
     
     
-    string line;
+//    string line;
     ifstream myfile (m_oalistname.c_str());
     if (myfile.is_open())
     {
