@@ -42,8 +42,17 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     size_t point;// = 0;
     while( (point = m_outfilename.find("/")) != std::string::npos){
         m_outfilename = m_outfilename.substr( (point + 1) );
-        cout << "Filename : " << m_outfilename << endl;
+//        cout << "Filename : " << m_outfilename << endl;
     }
+    
+    string outdir = infilename;
+    
+    if( (point = outdir.find(m_outfilename.c_str()) ) != std::string::npos){
+        outdir.substr(0,point);
+    }
+    cout << "outdir = " << outdir << endl;
+    cout << "m_outfilename = " << m_outfilename << endl;
+//    m_outfilename
     
 //    m_outfilename
     
