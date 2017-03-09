@@ -11,7 +11,7 @@ public:
     FindFiles(std::string infilename, std::string oa_listname);
     ~FindFiles();
     
-    void Run(){;}
+    void Run();
     
 private:
     TFile * m_infile;
