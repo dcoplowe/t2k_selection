@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
         }
     }
     
-    FindFiles find = new FindFiles(infilename, oa_list);
+    FindFiles * find = new FindFiles(infilename, oa_list);
     
     delete find;
     
