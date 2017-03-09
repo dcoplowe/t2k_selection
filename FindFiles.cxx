@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "TFile.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -60,17 +62,34 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
     m_outfilename += "_goodoa_list.txt";
     m_outfilename = outdir + m_outfilename;
-    cout << "outdir = " << outdir << endl;
-    cout << "m_outfilename = " << m_outfilename << endl;
-//    m_outfilename
-    
-//    m_outfilename
-    
+//    cout << "outdir = " << outdir << endl;
+//    cout << "m_outfilename = " << m_outfilename << endl;
 }
 
 FindFiles::~FindFiles(){
     if(m_infile->IsOpen()) m_infile->Close();
     if(m_infile) delete m_infile;
+}
+
+void FindFiles::Run(){
+
+    
+    string line;
+    ifstream myfile (m_oalistname.c_str());
+    if (myfile.is_open())
+    {
+        int counter = 0;
+        while ( getline (myfile,line) )
+        {
+            cout << line << '\n' << endl;
+            counter++;
+            if(counter == 10) break;
+        }
+        myfile.close();
+    }
+    
+    
+    
 }
 
 int main(int argc, char *argv[]){
