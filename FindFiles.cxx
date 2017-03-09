@@ -108,7 +108,8 @@ void FindFiles::Run(){
     for(int i = 1; i < n_lines; i++){
         global->Add(GetFileName(i).c_str());
         tracker->Add(GetFileName(i).c_str());
-        if(i == 20) break;
+        header->Add(GetFileName(i).c_str());
+//        if(i == 20) break;
     }
     
     Int_t global_evt;
@@ -118,14 +119,15 @@ void FindFiles::Run(){
     Int_t header_evt;
     
     global->SetBranchAddress("EventID", &global_evt);
-    global->SetBranchAddress("RunID", &global_run);
+//    global->SetBranchAddress("RunID", &global_run);
 
-    header->SetBranchAddress("EventID", &header_evt);
+//    header->SetBranchAddress("EventID", &header_evt);
     
-    tracker->SetBranchAddress("EventID", &tracker_evt);
+//    tracker->SetBranchAddress("EventID", &tracker_evt);
     
     Int_t glob_entries = global->GetEntries();
     Int_t trac_entries = tracker->GetEntries();
+//    Int_t trac_entries = tracker->GetEntries();
     
     cout << "m_entries = " << m_entries << endl;
     cout << "glob_entries = " << glob_entries << endl;
@@ -136,21 +138,17 @@ void FindFiles::Run(){
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
         
-        if(605125 == m_evt){
-            break;
+        for (int glob_evt = 0; glob_evt < glob_entries; glob_evt++) {
+            global->GetEntry(glob_evt);
+            cout << glob_evt + 1 << "/" << glob_entries << " m_evt = " << m_evt << ": Global evt = " << global_evt << " run = " << global_run << " Diff = " << m_evt - global_evt << endl;
+            
+            if(glob_evt == m_evt){
+                cout << "Found Event = " << global_evt << endl;
+                break;
+            }
+            
+//            if(glob_evt == 100) break;
         }
-        
-//        for (int glob_evt = 0; glob_evt < glob_entries; glob_evt++) {
-//            global->GetEntry(glob_evt);
-//            cout << glob_evt + 1 << "/" << glob_entries << " m_evt = " << m_evt << ": Global evt = " << global_evt << " run = " << global_run << " Diff = " << m_evt - global_evt << endl;
-//            
-//            if(glob_evt == m_evt){
-//                cout << "Found Event = " << global_evt << endl;
-//                break;
-//            }
-//            
-////            if(glob_evt == 100) break;
-//        }
 //
 //        for (int trac_evt = 0; trac_evt < trac_entries; trac_evt++) {
 //            tracker->GetEntry(trac_evt);
