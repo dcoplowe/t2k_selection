@@ -27,6 +27,7 @@ private:
     std::string m_oalistname;
     std::string m_outfilename;
     
+    int GetNoLines();
     std::string GetFileName(int num);
     
 };
@@ -96,42 +97,24 @@ FindFiles::~FindFiles(){
 
 void FindFiles::Run(){
 
-    int number_of_lines = 0;
-    std::string line;
-    std::ifstream linecount(m_oalistname.c_str());
-    while (std::getline(linecount, line)) number_of_lines++;
-    cout << "number_of_lines = " << number_of_lines << endl;
+    int n_lines = GetNoLines();
     
-    for(int i = 1; i < 11; i++){
-        string line1 = GetFileName(i);
-        cout << "A" << i << ")" << line1 << endl;
+    int last_good_file = 0;
+    
+    for(int entry = 0; entry < m_entries; entry++){
+        
+        m_intree->GetEntry(i);
+
+        cout << "Entry " << entry << ") evt = " << evt << endl;
+//        for(int file_no = 1; file_no < n_lines; file_no++){
+//            string file = GetFileName(file_no);
+//            cout << "A" << file_no << ")" << file << endl;
+//            if(file_no == 10) break;
+//        }
+        
+        if(entry == 10) break;
     }
-    
-//    for(int i = 0; i < m_entries; i++){
-//     
-//    
-//        
-//        
-//        
-//    }
-    
-    
-//    string line;
-    ifstream myfile (m_oalistname.c_str());
-    if (myfile.is_open())
-    {
-        int counter = 0;
-        while ( getline (myfile,line) )
-        {
-            cout << "B" << counter << ")" << line << endl;
-            counter++;
-            if(counter == 10) break;
-        }
-        myfile.close();
-    }
-    
-    
-    
+
 }
 
 std::string FindFiles::GetFileName(int num){
@@ -143,6 +126,15 @@ std::string FindFiles::GetFileName(int num){
     string line;
     file >> line;
     return line;
+}
+
+int FindFiles::GetNoLines(){
+    int number_of_lines = 0;
+    std::string line;
+    std::ifstream linecount(m_oalistname.c_str());
+    while (std::getline(linecount, line)) number_of_lines++;
+//    cout << "number_of_lines = " << number_of_lines << endl;
+    return number_of_lines;
 }
 
 
