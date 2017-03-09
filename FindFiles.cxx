@@ -112,7 +112,7 @@ void FindFiles::Run(){
 //            if(file_no == 10) break;
 //        }
         
-        if(entry == 10) break;
+        if(entry == 200) break;
     }
 
 }
