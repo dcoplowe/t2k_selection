@@ -124,13 +124,13 @@ void FindFiles::Run(){
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
         
-        for (int glob_evt; glob_evt < glob_entries; glob_evt++) {
+        for (int glob_evt = 0; glob_evt < glob_entries; glob_evt++) {
             global->GetEntry(glob_evt);
             cout << "Global evt = " << global_evt << endl;
             if(glob_evt == 100) break;
         }
         
-        for (int trac_evt; trac_evt < trac_entries; trac_evt++) {
+        for (int trac_evt = 0; trac_evt < trac_entries; trac_evt++) {
             tracker->GetEntry(trac_evt);
             cout << "Tracker evt = " << tracker_evt << endl;
             if(trac_evt == 100) break;
