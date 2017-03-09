@@ -133,7 +133,7 @@ void FindFiles::Run(){
         for (int trac_evt; trac_evt < trac_entries; trac_evt) {
             tracker->GetEntry(trac_evt);
             cout << "Global evt = " << tracker_evt << endl;
-            if(trc_evt == 100) break;
+            if(trac_evt == 100) break;
         }
         
         if(entry == 200) break;
