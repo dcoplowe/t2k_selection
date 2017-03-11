@@ -134,7 +134,7 @@ void FindFiles::Run(Int_t event_no){
             header->GetEntry(head_evt);
             
 //            if(glob_evt == m_evt){
-            if(glob_evt == 40 || glob_evt == 6000){
+            if(header_evt == 40 || header_evt == 6000){
                 cout << "Found Event = " << global_evt << endl;
 //                TFile * found =
                 cout << "header->GetFile()->GetName() = " << header->GetFile()->GetName() << endl;
