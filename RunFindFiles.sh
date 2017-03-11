@@ -14,7 +14,7 @@ if [ fgd == 2 ]; then
     events=1273
 fi
 
-for ii in (seq -w 0 ${events}); do
+for ii in $(seq -w 0 ${events}); do
 
     jobfile=${indir}${infile}_event${ii}.sh
 
