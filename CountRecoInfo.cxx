@@ -7,6 +7,7 @@
 #include <fstream>
 #include <limits>
 #include "TChain.h"
+#include <sstream>
 
 using namespace std;
 
@@ -40,7 +41,7 @@ CountRecoInfo::CountRecoInfo(std::string infilename){
         
         string tmp_file;
         Int_t tmp_event;
-        std::istringstream ss(line);
+        stringstream ss(line);
         ss >> tmp_file >> tmp_event;
         cout << "tmp_file = " << tmp_file << " tmp_event = " << tmp_event << endl;
     
@@ -125,16 +126,6 @@ void CountRecoInfo::Run(){
 //    }
 
 }
-
-int CountRecoInfo::GetNoLines(){
-    int number_of_lines = 0;
-    std::string line;
-    std::ifstream linecount(m_oalistname.c_str());
-    while (std::getline(linecount, line)) number_of_lines++;
-//    cout << "number_of_lines = " << number_of_lines << endl;
-    return number_of_lines;
-}
-
 
 int main(int argc, char *argv[]){
 
