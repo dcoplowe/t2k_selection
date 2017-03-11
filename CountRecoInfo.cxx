@@ -40,7 +40,7 @@ CountRecoInfo::CountRecoInfo(std::string infilename){
         
         string tmp_file;
         Int_t tmp_event;
-        stringstream ss(line);
+        istringstream ss(line);
         ss >> tmp_file >> tmp_event;
         cout << "tmp_file = " << tmp_file << " tmp_event = " << tmp_event << endl;
     
