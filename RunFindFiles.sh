@@ -16,12 +16,12 @@ fi
 
 for ii in $(seq -w 0 ${events}); do
 
-    jobfile=${indir}${infile}_event${ii}.sh
+    jobfile=${infile}_event${ii}.sh
 
     cat > ${jobfile} << EOF
 
-PATH=${PATH}:/data/t2k/coplowe/software/t2k_selection
 module load root
+PATH=${PATH}:/data/t2k/coplowe/software/t2k_selection
 echo "${PATH}"
 echo "./FindFiles -i ${indir}${infile}.root -l ${list} -n ${eventno}"
 
