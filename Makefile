@@ -15,12 +15,12 @@ MAIN2 = CountRecoInfo
 all:    $(MAIN1) $(MAIN2)
 	@echo  FindFiles and CountRecoInfo have been compiled successfully.
 
-$(MAIN1): $(OBJS1)
-	$(CXX) $(CXXFLAGS) $(ROOTFLAGS) -o $(MAIN1) $(OBJS1)
+#$(MAIN1): $(OBJS1)
+#	$(CXX) $(CXXFLAGS) $(ROOTFLAGS) -o $(MAIN1) $(OBJS1)
 
 $(MAIN2): $(OBJS2)
 	$(CXX) $(CXXFLAGS) $(ROOTFLAGS) -o $(MAIN2) $(OBJS2)
 
 clean:
-	$(RM) *.o *~ $(MAIN1)
+#	$(RM) *.o *~ $(MAIN1)
 	$(RM) *.o *~ $(MAIN2)
