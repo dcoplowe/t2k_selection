@@ -132,7 +132,7 @@ int main(int argc, char *argv[]){
     string infilename;
     
     char cc;
-    while ((cc = getopt(argc, argv, "i")) != -1) {
+    while ((cc = getopt(argc, argv, "i:")) != -1) {
         switch (cc) {
             case 'i': infilename = string(optarg); break;
             default: break;
