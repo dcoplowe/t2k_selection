@@ -2,9 +2,9 @@
 
 #ifndef ND__TTrueVertex_h
 #define ND__TTrueVertex_h
-namespace ND {
-    class TTrueVertex;
-} // end of namespace.
+//namespace ND {
+//    class TTrueVertex;
+//} // end of namespace.
 
 #include "TLorentzVector.h"
 
