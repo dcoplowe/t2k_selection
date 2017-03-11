@@ -10,93 +10,38 @@
 
 using namespace std;
 
-class FindFiles {
+struct EventInfo {
+    std::string filename;
+    Int_t EventID;
+};
+
+class CountRecoInfo {
 public:
-    FindFiles(std::string infilename, std::string oa_listname);
-    ~FindFiles();
+    CountRecoInfo(std::string infilename);
+    ~CountRecoInfo();
     
-    void Run(Int_t event_no = -1);
+    void Run();
     
 private:
-    TFile * m_infile;
-    TTree * m_intree;
-    
-    Int_t m_evt;
-    TBranch * m_b_evt;
-    Int_t m_entries;
-    
-    std::string m_oalistname;
-    std::string m_outfilename;
     
     int GetNoLines();
     std::string GetFileName(int num);
     
 };
 
-FindFiles::FindFiles(std::string infilename, std::string oa_list){
+CountRecoInfo::CountRecoInfo(std::string infilename){
     
-    m_infile = new TFile(infilename.c_str(), "READ");
     
-//    if(m_infile){
-//        cout << "ERROR : Could not open file (NULL): " << infilename << endl;
-//        exit(0);
-//    }
     
-    if(!m_infile->IsOpen()){
-        cout << "ERROR : Could not open file : " << infilename << endl;
-        exit(0);
-    }
     
-    m_intree = (TTree*)m_infile->Get("truth");
-
-    if(m_intree){
-    m_intree->SetBranchAddress("evt", &m_evt, &m_b_evt);
-    m_entries = m_intree->GetEntries();
-    }
-    else {
-        cout << "ERROR : Could not get tree" << endl;
-        exit(0);
-    }
-    
-    m_oalistname = oa_list;
-    
-    //Now set the out file name:
-    m_outfilename= infilename;
-    //1) Remove any path info.
-    //2) Remove .root type.
-    //3) Append _analysis_list.txt
-    
-    size_t point;// = 0;
-    while( (point = m_outfilename.find("/")) != std::string::npos){
-        m_outfilename = m_outfilename.substr( (point + 1) );
-//        cout << "Filename : " << m_outfilename << endl;
-    }
-    
-    if( (point = m_outfilename.find(".root")) != std::string::npos){
-        m_outfilename = m_outfilename.substr(0, point);
-//                cout << "Filename : " << m_outfilename << endl;
-    }
-    
-    string outdir = infilename;
-    if( (point = outdir.find(m_outfilename.c_str()) ) != std::string::npos){
-//        cout << "Point = " << point << endl;
-        outdir = outdir.substr(0,point);
-    }
-    
-    if(outdir.empty()) outdir = "~/";
-    
-    m_outfilename += "_goodoa_list.txt";
-    m_outfilename = outdir + m_outfilename;
-//    cout << "outdir = " << outdir << endl;
-//    cout << "m_outfilename = " << m_outfilename << endl;
 }
 
-FindFiles::~FindFiles(){
+CountRecoInfo::~CountRecoInfo(){
     if(m_infile->IsOpen()) m_infile->Close();
     if(m_infile) delete m_infile;
 }
 
-void FindFiles::Run(Int_t event_no){
+void CountRecoInfo::Run(Int_t event_no){
 
     int n_lines = GetNoLines();
     
@@ -171,7 +116,7 @@ void FindFiles::Run(Int_t event_no){
 
 }
 
-std::string FindFiles::GetFileName(int num){
+std::string CountRecoInfo::GetFileName(int num){
     ifstream file (m_oalistname.c_str());
     file.seekg(std::ios::beg);
     for(int i=0; i < num - 1; ++i){
@@ -182,7 +127,7 @@ std::string FindFiles::GetFileName(int num){
     return line;
 }
 
-int FindFiles::GetNoLines(){
+int CountRecoInfo::GetNoLines(){
     int number_of_lines = 0;
     std::string line;
     std::ifstream linecount(m_oalistname.c_str());
@@ -208,7 +153,7 @@ int main(int argc, char *argv[]){
         }
     }
     
-    FindFiles * find = new FindFiles(infilename, oa_list);
+    CountRecoInfo * find = new CountRecoInfo(infilename, oa_list);
     find->Run(event_no);
     
     delete find;

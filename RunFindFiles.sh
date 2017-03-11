@@ -6,9 +6,9 @@ infile=Selection_Evaluation_FGD${fgd}_060317
 list=/data/t2k/coplowe/transverseanalysis/mclists/P6BNeutWAFull.txt
 
 cd ${indir}
-#FGD1 = 1006
-#FGD2 = 1273
-events=0
+#FGD1 = 1006 (minus 1) = 1005
+#FGD2 = 1273 (minus 1) = 1272
+events=1005
 #1006
 if [ fgd == 2 ]; then
     events=1273
@@ -23,7 +23,7 @@ for ii in $(seq -w 0 ${events}); do
 module load root
 PATH=${PATH}:/data/t2k/coplowe/software/t2k_selection
 echo "${PATH}"
-echo "./FindFiles -i ${indir}${infile}.root -l ${list} -n ${ii}"
+echo "FindFiles -i ${indir}${infile}.root -l ${list} -n ${ii}"
 FindFiles -i ${indir}${infile}.root -l ${list} -n ${ii}
 
 EOF
