@@ -1,8 +1,8 @@
 #ifndef ND__TTrueVertex_cxx
 #define ND__TTrueVertex_cxx
-ND::TTrueVertex::TTrueVertex() {
+TTrueVertex::TTrueVertex() {
 }
-ND::TTrueVertex::TTrueVertex(const TTrueVertex & rhs)
+TTrueVertex::TTrueVertex(const TTrueVertex & rhs)
 : TObject(const_cast<TTrueVertex &>( rhs ))
 , Position(const_cast<TTrueVertex &>( rhs ).Position)
 , ID(const_cast<TTrueVertex &>( rhs ).ID)
@@ -13,15 +13,15 @@ ND::TTrueVertex::TTrueVertex(const TTrueVertex & rhs)
     // Use at your own risk!
     if (&rhs) {} // avoid warning about unused parameter
 }
-ND::TTrueVertex::~TTrueVertex() {
+TTrueVertex::~TTrueVertex() {
 }
 #endif // ND__TTrueVertex_cxx
 
 #ifndef ND__TTrueParticle_cxx
 #define ND__TTrueParticle_cxx
-ND::TTrueParticle::TTrueParticle() {
+TTrueParticle::TTrueParticle() {
 }
-ND::TTrueParticle::TTrueParticle(const TTrueParticle & rhs)
+TTrueParticle::TTrueParticle(const TTrueParticle & rhs)
 : TObject(const_cast<TTrueParticle &>( rhs ))
 , ID(const_cast<TTrueParticle &>( rhs ).ID)
 , Pur(const_cast<TTrueParticle &>( rhs ).Pur)
@@ -32,6 +32,6 @@ ND::TTrueParticle::TTrueParticle(const TTrueParticle & rhs)
     // Use at your own risk!
     if (&rhs) {} // avoid warning about unused parameter
 }
-ND::TTrueParticle::~TTrueParticle() {
+TTrueParticle::~TTrueParticle() {
 }
 #endif // ND__TTrueParticle_cxx
