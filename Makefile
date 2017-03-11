@@ -12,8 +12,7 @@ OBJS2 = $(SRCS2:.c=.o)
 
 MAIN2 = CountRecoInfo
 
-all:    $(MAIN1)
-	$(MAIN2)
+all:    $(MAIN1) $(MAIN2)
 	@echo  FindFiles and CountRecoInfo have been compiled successfully.
 
 $(MAIN1): $(OBJS1)
