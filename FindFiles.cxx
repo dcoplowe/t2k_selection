@@ -126,7 +126,7 @@ void FindFiles::Run(Int_t event_no){
         last = event_no + 1;
     }
     
-    for(int first = 0; entry < last; entry++){
+    for(int entry = first; entry < last; entry++){
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
         
