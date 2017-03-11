@@ -60,22 +60,3 @@ namespace ND {
     };
 } // namespace
 #endif
-
-#ifndef ND__TTrueParticle_cxx
-#define ND__TTrueParticle_cxx
-ND::TTrueParticle::TTrueParticle() {
-}
-ND::TTrueParticle::TTrueParticle(const TTrueParticle & rhs)
-: TObject(const_cast<TTrueParticle &>( rhs ))
-, ID(const_cast<TTrueParticle &>( rhs ).ID)
-, Pur(const_cast<TTrueParticle &>( rhs ).Pur)
-, Eff(const_cast<TTrueParticle &>( rhs ).Eff)
-, Vertex(const_cast<TTrueParticle &>( rhs ).Vertex)
-{
-    // This is NOT a copy constructor. This is actually a move constructor (for stl container's sake).
-    // Use at your own risk!
-    if (&rhs) {} // avoid warning about unused parameter
-}
-ND::TTrueParticle::~TTrueParticle() {
-}
-#endif // ND__TTrueParticle_cxx
