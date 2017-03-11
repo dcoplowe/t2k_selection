@@ -142,7 +142,7 @@ void FindFiles::Run(Int_t event_no){
         for (int head_evt = 0; head_evt < header_entries; head_evt++) {
             header->GetEntry(head_evt);
             
-            if(glob_evt == 40/*m_evt*/){
+            if(header_evt == 40/*m_evt*/){
                 cout << "Found Event = " << header_evt << endl;
                 cout << header->GetFile()->GetName() << " " << m_evt << endl;
                 break;
