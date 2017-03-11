@@ -136,6 +136,12 @@ void FindFiles::Run(Int_t event_no){
     string savename = m_outfilename + "_range" + ss_first.str() + "-" + ss_last.str() + ".txt";
     cout << "Outfile: " << savename << endl;
     
+    ofstream outfile(savename.c_str());
+    if(!outfile.is_open()){
+        cout << "ERROR : Could not open file: " << savename << endl;
+        exit(0);
+    }
+    
     for(int entry = first; entry < last; entry++){
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
@@ -145,12 +151,13 @@ void FindFiles::Run(Int_t event_no){
             
             if(header_evt == 40/*m_evt*/){
                 cout << "Found Event = " << header_evt << endl;
-                cout << header->GetFile()->GetName() << " " << m_evt << endl;
+                outfile << header->GetFile()->GetName() << " " << header_evt << endl;
+                outfile << header->GetFile()->GetName() << " " << header_evt << endl;
                 break;
             }
         }
     }
-
+    if(outfile.is_open()) outfile.close();
 }
 
 std::string FindFiles::GetFileName(int num){
