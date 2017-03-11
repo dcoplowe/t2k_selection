@@ -8,13 +8,13 @@ list=/data/t2k/coplowe/transverseanalysis/mclists/P6BNeutWAFull.txt
 cd ${indir}
 #FGD1 = 1006 (minus 1) = 1005
 #FGD2 = 1273 (minus 1) = 1272
-events=1005
+events=1273
 #1006
-if [ fgd == 2 ]; then
-    events=1273
-fi
+#if [ fgd == 2 ]; then
+#    events=1273
+#fi
 
-for ii in $(seq -w 0 ${events}); do
+for ii in $(seq -w 1000 ${events}); do
 
     jobfile=${infile}_event${ii}.sh
 
