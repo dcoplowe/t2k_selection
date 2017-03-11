@@ -38,7 +38,7 @@ CountRecoInfo::CountRecoInfo(std::string infilename){
     
     string line;
     while (std::getline(infile, line)){
-        
+        cout << "Line = " <<  line << endl;
         string tmp_file;
         Int_t tmp_event;
         stringstream ss(line);
