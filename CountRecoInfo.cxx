@@ -40,7 +40,7 @@ CountRecoInfo::CountRecoInfo(std::string infilename){
         
         string tmp_file;
         Int_t tmp_event;
-        istringstream ss(line);
+        std::istringstream ss(line);
         ss >> tmp_file >> tmp_event;
         cout << "tmp_file = " << tmp_file << " tmp_event = " << tmp_event << endl;
     
@@ -54,8 +54,6 @@ CountRecoInfo::~CountRecoInfo(){
 }
 
 void CountRecoInfo::Run(){
-
-    int n_lines = GetNoLines();
     
 //    TChain * global = new TChain("ReconDir/Global");
 //    TChain * tracker = new TChain("ReconDir/Tracker");
