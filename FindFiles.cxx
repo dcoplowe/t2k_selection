@@ -7,6 +7,7 @@
 #include <fstream>
 #include <limits>
 #include "TChain.h"
+#include <sstream>
 
 using namespace std;
 
