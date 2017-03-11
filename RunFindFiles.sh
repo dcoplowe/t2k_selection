@@ -24,7 +24,7 @@ module load root
 PATH=${PATH}:/data/t2k/coplowe/software/t2k_selection
 echo "${PATH}"
 echo "./FindFiles -i ${indir}${infile}.root -l ${list} -n ${ii}"
-./FindFiles -i ${indir}${infile}.root -l ${list} -n ${ii}
+FindFiles -i ${indir}${infile}.root -l ${list} -n ${ii}
 
 EOF
 
