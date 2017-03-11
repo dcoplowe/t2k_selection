@@ -105,7 +105,7 @@ void FindFiles::Run(Int_t event_no){
     
     for(int i = 1; i < n_lines; i++){
         header->Add(GetFileName(i).c_str());
-        if(i == 20) break;
+//        if(i == 20) break;
     }
     
     Int_t header_evt;
@@ -134,7 +134,7 @@ void FindFiles::Run(Int_t event_no){
     ss_last << (last - 1);
     
     string savename = m_outfilename + "_range" + ss_first.str() + "-" + ss_last.str() + ".txt";
-    cout << "Outfile: " << savename << endl;
+//    cout << "Outfile: " << savename << endl;
     
     ofstream outfile(savename.c_str());
     if(!outfile.is_open()){
@@ -145,7 +145,6 @@ void FindFiles::Run(Int_t event_no){
     for(int entry = first; entry < last; entry++){
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
-        
         for (int head_evt = 0; head_evt < header_entries; head_evt++) {
             header->GetEntry(head_evt);
             if(header_evt == 40/*m_evt*/){
