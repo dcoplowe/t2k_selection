@@ -131,7 +131,7 @@ void FindFiles::Run(Int_t event_no){
     
     stringstream ss_first, ss_last;
     ss_first << first;
-    ss_last << last;
+    ss_last << (last - 1);
     
     string savename = m_outfilename + "_range" + ss_first.str() + "-" + ss_last.str() + ".txt";
     cout << "Outfile: " << savename << endl;
