@@ -85,7 +85,7 @@ FindFiles::FindFiles(std::string infilename, std::string oa_list){
     
     if(outdir.empty()) outdir = "~/";
     
-    m_outfilename += "_goodoa_list.txt";
+//    m_outfilename += "_goodoa_list.txt";
     m_outfilename = outdir + m_outfilename;
 //    cout << "outdir = " << outdir << endl;
 //    cout << "m_outfilename = " << m_outfilename << endl;
@@ -126,6 +126,15 @@ void FindFiles::Run(Int_t event_no){
         last = event_no + 1;
     }
     
+    //Open the file here:
+    
+    stringstream ss_first, ss_last;
+    ss_first << first;
+    ss_last << last;
+    
+    string savename = m_outfilename + "_range" + ss_first.str() + "-" + ss_last.str() + ".txt";
+    cout << "Outfile: " << savename << endl;
+    
     for(int entry = first; entry < last; entry++){
         m_intree->GetEntry(entry);
         cout << "Entry " << entry << ") evt = " << m_evt << endl;
@@ -133,24 +142,12 @@ void FindFiles::Run(Int_t event_no){
         for (int head_evt = 0; head_evt < header_entries; head_evt++) {
             header->GetEntry(head_evt);
             
-//            if(glob_evt == m_evt){
-            if(header_evt == 40 || header_evt == 6000){
+            if(glob_evt == 40/*m_evt*/){
                 cout << "Found Event = " << header_evt << endl;
-//                TFile * found =
-                cout << "header->GetFile()->GetName() = " << header->GetFile()->GetName() << endl;
-//                break;
+                cout << header->GetFile()->GetName() << " " << m_evt << endl;
+                break;
             }
-            
-//            if(glob_evt == 100) break;
         }
-//
-//        for (int trac_evt = 0; trac_evt < trac_entries; trac_evt++) {
-//            tracker->GetEntry(trac_evt);
-//            cout << "Tracker evt = " << tracker_evt << endl;
-//            if(trac_evt == 100) break;
-//        }
-        
-        if(entry == 10000) break;
     }
 
 }
