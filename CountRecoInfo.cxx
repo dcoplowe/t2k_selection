@@ -38,13 +38,20 @@ CountRecoInfo::CountRecoInfo(std::string infilename){
     
     string line;
     while (std::getline(infile, line)){
-        cout << "Line = " <<  line << endl;
+//        cout << "Line = " <<  line << endl;
         string tmp_file;
         Int_t tmp_event;
         stringstream ss(line);
-        ss >> tmp_file >> tmp_event;
-        cout << "tmp_file = " << tmp_file << " tmp_event = " << tmp_event << endl;
-    
+        if( !(ss >> tmp_file >> tmp_event) ){
+            cerr<<"Bad line format: "<<endl
+            <<"     "<<line<<endl;
+            continue;
+        }
+//        cout << "tmp_file = " << tmp_file << " tmp_event = " << tmp_event << endl;
+        EventInfo tmp_info;
+        tmp_info.filename = tmp_file;
+        tmp_info.EventID = tmp_event;
+        m_info.push_back(tmp_info);
     }
     infile.close();
     
