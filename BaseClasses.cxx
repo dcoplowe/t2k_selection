@@ -1,5 +1,9 @@
 #include "BaseClasses.h"
 
+namespace ND {
+    class TTrueVertex;
+} // end of namespace.
+
 #ifndef ND__TTrueVertex_cxx
 #define ND__TTrueVertex_cxx
 ND::TTrueVertex::TTrueVertex() {
