@@ -32,7 +32,7 @@ CountRecoInfo::CountRecoInfo(std::string infilename){
     ifstream infile(infilename.c_str());
     if(!infile.is_open()){
         cout << "ERROR : Could not open file " << infilename << endl;
-        error(0);
+        exit(0);
     }
     
     string line;
