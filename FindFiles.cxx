@@ -187,7 +187,7 @@ int main(int argc, char *argv[]){
         switch (cc) {
             case 'i': infilename = string(optarg); break;
             case 'l': oa_list = string(optarg); break;
-            case 'n': event_no = atio(optarg); break;
+            case 'n': event_no = atoi(optarg); break;
             default: break;
         }
     }
