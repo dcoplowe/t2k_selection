@@ -1,11 +1,10 @@
-#include "TObject.h"
-
 #ifndef ND__TTrueVertex_h
 #define ND__TTrueVertex_h
 namespace ND {
     class TTrueVertex;
 } // end of namespace.
 
+#include "TObject.h"
 #include "TLorentzVector.h"
 
 namespace ND {
