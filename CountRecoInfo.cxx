@@ -13,6 +13,7 @@ using namespace std;
 struct EventInfo {
     std::string filename;
     Int_t EventID;
+//    Int_t FGD;
 };
 
 class CountRecoInfo {
@@ -23,25 +24,36 @@ public:
     void Run();
     
 private:
-    
-    int GetNoLines();
-    std::string GetFileName(int num);
-    
+    std::vector<EventInfo> m_info;
 };
 
 CountRecoInfo::CountRecoInfo(std::string infilename){
     
+    ifstream infile(infilename.c_str());
+    if(!infile.is_open()){
+        cout << "ERROR : Could not open file " << infilename << endl;
+        error(0);
+    }
     
+    string line;
+    while (std::getline(infile, line)){
+        
+        string tmp_file;
+        Int_t tmp_event;
+        stringstream ss(line);
+        ss >> tmp_file >> tmp_event;
+        cout << "tmp_file = " << tmp_file << " tmp_event = " << tmp_event << endl;
     
+    }
+    infile.close();
     
 }
 
 CountRecoInfo::~CountRecoInfo(){
-    if(m_infile->IsOpen()) m_infile->Close();
-    if(m_infile) delete m_infile;
+    m_info.clear();
 }
 
-void CountRecoInfo::Run(Int_t event_no){
+void CountRecoInfo::Run(){
 
     int n_lines = GetNoLines();
     
@@ -116,17 +128,6 @@ void CountRecoInfo::Run(Int_t event_no){
 
 }
 
-std::string CountRecoInfo::GetFileName(int num){
-    ifstream file (m_oalistname.c_str());
-    file.seekg(std::ios::beg);
-    for(int i=0; i < num - 1; ++i){
-        file.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-    }
-    string line;
-    file >> line;
-    return line;
-}
-
 int CountRecoInfo::GetNoLines(){
     int number_of_lines = 0;
     std::string line;
@@ -140,21 +141,17 @@ int CountRecoInfo::GetNoLines(){
 int main(int argc, char *argv[]){
 
     string infilename;
-    string oa_list;
-    Int_t event_no = -1;
     
     char cc;
-    while ((cc = getopt(argc, argv, "i:l:n:")) != -1) {
+    while ((cc = getopt(argc, argv, "i")) != -1) {
         switch (cc) {
             case 'i': infilename = string(optarg); break;
-            case 'l': oa_list = string(optarg); break;
-            case 'n': event_no = atio(optarg); break;
             default: break;
         }
     }
     
-    CountRecoInfo * find = new CountRecoInfo(infilename, oa_list);
-    find->Run(event_no);
+    CountRecoInfo * find = new CountRecoInfo(infilename);
+//    find->Run();
     
     delete find;
     
