@@ -7,7 +7,7 @@ OBJS1 = $(SRCS1:.c=.o)
 
 MAIN1 = FindFiles 
 
-SRCS2 = CountRecoInfo.cxx
+SRCS2 = CountRecoInfo.cxx BaseClasses.cxx
 OBJS2 = $(SRCS2:.c=.o)
 
 MAIN2 = CountRecoInfo
